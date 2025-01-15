@@ -1,0 +1,21 @@
+@extends('layouts.app')
+
+@section('title', 'Login')
+
+@section('content')
+        <div class="row">
+            <div class="col-md-3">
+                <x-sidebar role="{{ $role }}" />
+            </div>
+            <div class="col-md-9 p-4">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+
+            </div>
+        </div>
+@endsection
