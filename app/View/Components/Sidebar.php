@@ -29,7 +29,10 @@ class Sidebar extends Component
             [
                 "label" => "Transaction",
                 "route" => "dashboard.transaction",
-                "activeRoute" => ["dashboard.transaction"],
+                "activeRoute" => [
+                    "dashboard.transaction",
+                    "transactions.selling",
+                ],
                 "permission" => "view transaction",
                 "icon" => "ri-exchange-dollar-line",
                 "roles" => ["owner", "staff"],

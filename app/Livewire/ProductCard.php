@@ -8,7 +8,6 @@ use App\Models\Product;
 class ProductCard extends Component
 {
     public Product $product;
-    public $quantity = 0;
 
     public function mount(Product $product)
     {
@@ -33,6 +32,13 @@ class ProductCard extends Component
                 "quantity" => $this->quantity,
             ]);
         }
+    }
+
+    public function clickProduct()
+    {
+        $this->dispatch("addOrder", [
+            "product" => $this->product,
+        ]);
     }
 
     public function render()

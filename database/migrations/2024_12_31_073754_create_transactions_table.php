@@ -108,10 +108,47 @@ return new class extends Migration {
             $table->date("due_date");
             $table->timestamps();
         });
+
+        Schema::create("receivable_payment_histories", function (
+            Blueprint $table
+        ) {
+            $table->id();
+            $table->unsignedBigInteger("receivable_id");
+            $table->date("payment_date");
+            $table->decimal("amount_paid", 10, 2);
+            $table->enum("payment_method", ["cash", "transfer", "other"]);
+            $table->text("description")->nullable();
+            $table->timestamps();
+
+            $table
+                ->foreign("receivable_id")
+                ->references("id")
+                ->on("receivables")
+                ->onDelete("cascade");
+        });
+        Schema::create("payable_payment_histories", function (
+            Blueprint $table
+        ) {
+            $table->id();
+            $table->unsignedBigInteger("payable_id");
+            $table->date("payment_date");
+            $table->decimal("amount_paid", 10, 2);
+            $table->enum("payment_method", ["cash", "transfer", "other"]);
+            $table->text("description")->nullable();
+            $table->timestamps();
+
+            $table
+                ->foreign("payable_id")
+                ->references("id")
+                ->on("payables")
+                ->onDelete("cascade");
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists("payable_payment_histories");
+        Schema::dropIfExists("receivable_payment_histories");
         Schema::dropIfExists("payables");
         Schema::dropIfExists("receivables");
         Schema::dropIfExists("purchase_detail_transactions");

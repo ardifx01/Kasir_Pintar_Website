@@ -33,7 +33,7 @@ class Product extends Model
 
     public function sellingDetailTransactions()
     {
-        return $this->hasMany(SellingDetailTransaction::class);
+        return $this->hasMany(SellingDetailTransaction::class, "product_id");
     }
 
     public function purchaseDetailTransactions()

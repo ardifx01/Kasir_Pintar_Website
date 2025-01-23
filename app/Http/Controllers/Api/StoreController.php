@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class StoreController extends Controller
 {
@@ -109,7 +110,7 @@ class StoreController extends Controller
     {
         try {
             Gate::authorize("update", $store);
-
+            return response()->json($request);
             $validator = Validator::make($request->all(), [
                 "name" => ["nullable", "string", "max:255"],
                 "number_phone" => ["nullable", "string"],

@@ -34,11 +34,7 @@ class DashboardController extends Controller
         $role = Auth::user()->role;
         return view("dashboard.manajemen-toko", compact("role"));
     }
-    public function laporan()
-    {
-        $role = Auth::user()->role;
-        return view("dashboard.laporan", compact("role"));
-    }
+
     public function setting()
     {
         $role = Auth::user()->role;
@@ -49,6 +45,13 @@ class DashboardController extends Controller
         $role = Auth::user()->role;
         return view("dashboard.manajemen-user", compact("role"));
     }
+
+    public function laporan()
+    {
+        $role = Auth::user()->role;
+        return view("dashboard.manajemen-laporan-transaction", compact("role"));
+    }
+
     public function laporanMasalah()
     {
         $role = Auth::user()->role;

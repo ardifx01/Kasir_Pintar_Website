@@ -33,7 +33,10 @@ class SellingTransaction extends Model
 
     public function sellingDetailTransactions()
     {
-        return $this->hasMany(SellingDetailTransaction::class);
+        return $this->hasMany(
+            SellingDetailTransaction::class,
+            "transaction_id"
+        );
     }
 
     public function receivable()

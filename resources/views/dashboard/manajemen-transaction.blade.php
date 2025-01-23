@@ -9,12 +9,12 @@
             </div>
             <div class="col-md-9 p-4 flex">
                 <x-card-menu
-                    routeName="transaction-selling"
+                    routeName="transactions.selling"
                     img="trade.png"
                     label="Transaksi Penjualan"
                 />
                 <x-card-menu
-                    routeName="staffs.index"
+                    routeName="transactions.purchasing"
                     img="receiver.png"
                     label="Transaksi Pembelian"
                 />

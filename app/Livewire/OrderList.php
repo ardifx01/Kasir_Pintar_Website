@@ -15,7 +15,7 @@ class OrderList extends Component
     }
 
     #[On("updateOrderItems")]
-    public function updaeOrderItems($data)
+    public function updatedOrderItems($data)
     {
         $this->orderItems = $data["orderItems"];
     }

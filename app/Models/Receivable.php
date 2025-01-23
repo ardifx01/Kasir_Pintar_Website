@@ -30,4 +30,9 @@ class Receivable extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    public function paymentHistories()
+    {
+        return $this->hasMany(ReceivablePaymentHistory::class);
+    }
 }

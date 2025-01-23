@@ -30,4 +30,9 @@ class Payable extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function paymentHistories()
+    {
+        return $this->hasMany(PayablePaymentHistory::class);
+    }
 }

@@ -126,8 +126,10 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $this->authorize("update", $product);
-        $stores = $this->getAccessibleStores();
-        $categoryProducts = \App\Models\CategoryProduct::all();
+        $stores = $this->getAccessibleStores()->pluck("name", "id")->toArray();
+        $categoryProducts = CategoryProduct::all()
+            ->pluck("name", "id")
+            ->toArray();
         $role = Auth::user()->role;
         return view(
             "products.edit",

@@ -3,18 +3,19 @@
 @section('title', 'Transaksi Penjualan')
 
 @section('content')
-<div class="flex">
-    <div class="w-2/3 p-4">
-        @if ($stores->count() > 0)
-            <x-select-store :stores="$stores" />
-            <livewire:product-list :products="$products" />
-        @else
-            <div class="p-4 bg-yellow-100 border border-yellow-400 rounded text-center">
-                <p>Anda belum memiliki toko atau belum terdaftar sebagai staff. Silahkan hubungi admin.</p>
-            </div>
-        @endif
+<div class="row">
+    <div class="col-md-3">
+        <x-sidebar role="{{ $role }}" />
     </div>
-    <div class="w-1/3 p-4">
+    <div class="col-md-6 p-4">
+        <div class="flex justify-between mb-3">
+            <x-select-store :stores="$stores" :selectedStoreId="$stores->first()?->id" action="transactions.selling"/>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <livewire:product-list :products="$products"/>
+        </div>
+    </div>
+    <div class="col-md-3">
         <livewire:checkout-panel />
     </div>
 </div>

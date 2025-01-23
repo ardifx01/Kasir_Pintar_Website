@@ -11,6 +11,10 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellingTransactionController;
+use App\Http\Controllers\PurchaseTransactionController;
+use App\Http\Controllers\ReportController;
+
+use Barryvdh\DomPDF\Facade\Pdf;
 
 // Rute untuk menampilkan form login
 Route::get("/login", [AuthController::class, "showLoginForm"])->name("login");
@@ -233,5 +237,45 @@ Route::middleware(["auth:sanctum"])
                 SellingTransactionController::class,
                 "index",
             ])->name("transactions.selling");
+            Route::get("/selling/{sellingTransaction}", [
+                SellingTransactionController::class,
+                "show",
+            ])->name("transactions.detail-selling");
+            Route::get("/purchasing", [
+                PurchaseTransactionController::class,
+                "index",
+            ])->name("transactions.purchasing");
+            Route::get("/purchasing/{purchaseTransaction}", [
+                PurchaseTransactionController::class,
+                "show",
+            ])->name("transactions.detail-purchasing");
         });
+
+        Route::prefix("reports")->group(function () {
+            Route::get("/selling", [
+                ReportController::class,
+                "sellingReport",
+            ])->name("report.selling");
+            Route::get("/purchase", [
+                ReportController::class,
+                "purchaseReport",
+            ])->name("report.purchase");
+            Route::get("/receivable", [
+                ReportController::class,
+                "receivableReport",
+            ])->name("report.receivable");
+            Route::get("/payable", [
+                ReportController::class,
+                "payableReport",
+            ])->name("report.payable");
+        });
+
+        Route::get("/selling-transactions/{sellingTransaction}/print-pdf", [
+            SellingTransactionController::class,
+            "printPdf",
+        ])->name("selling-transactions.printPdf");
+        Route::get("/purchase-transactions/{purchaseTransaction}/print-pdf", [
+            PurchaseTransactionController::class,
+            "printPdf",
+        ])->name("purchase-transactions.printPdf");
     });

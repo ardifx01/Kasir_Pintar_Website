@@ -20,7 +20,7 @@ class SelectStore extends Component
         ?int $selectedStoreId = null
     ) {
         $this->stores = $stores;
-        $this->action = $action;
+        $this->action = $action ?? "";
         $this->selectedStoreId = $selectedStoreId;
     }
     public function render(): View|Closure|string

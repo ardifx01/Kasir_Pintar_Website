@@ -19,9 +19,6 @@
                 <x-input label="Nomor Telepon" name="number_phone" id="number_phone" :value="old('number_phone')" />
                 <x-select label="Role" name="role" id="role" :options="['staff' => 'Staff', 'manager' => 'Manager', 'admin' => 'Admin']" required />
                 <x-select label="Toko" name="store_id" id="store_id" :options="$stores->pluck('name', 'id')->toArray()" required />
-                <div class="mt-3">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
             </x-form>
         </x-card>
     </div>

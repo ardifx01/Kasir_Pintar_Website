@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="/storage/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/storage/assets/bootstrap/css/general.css">
     @livewireStyles
+    @livewireScripts
 </head>
 <body>
     <div class="container-fluid p-0">
         @yield('content')
     </div>
     @yield('additional')
-    @livewireScripts
+
     <script src="/storage/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

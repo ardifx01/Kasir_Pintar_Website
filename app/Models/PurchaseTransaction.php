@@ -33,7 +33,10 @@ class PurchaseTransaction extends Model
 
     public function purchaseDetailTransactions()
     {
-        return $this->hasMany(PurchaseDetailTransaction::class);
+        return $this->hasMany(
+            PurchaseDetailTransaction::class,
+            "transaction_id"
+        );
     }
 
     public function payable()

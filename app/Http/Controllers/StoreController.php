@@ -6,9 +6,12 @@ use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class StoreController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $role = Auth::user()->role;
