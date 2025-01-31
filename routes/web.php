@@ -215,7 +215,7 @@ Route::middleware(["auth:sanctum"])
             Route::post("/", [ProductController::class, "store"])->name(
                 "products.store"
             );
-            Route::get("/{store_id}", [ProductController::class, "show"])->name(
+            Route::get("/store/", [ProductController::class, "show"])->name(
                 "products.show"
             ); // Menggunakan store_id
             Route::get("/{product}/edit", [

@@ -19,14 +19,6 @@ class Sidebar extends Component
     {
         $menuItems = [
             [
-                "label" => "Dashboard",
-                "route" => "dashboard.home",
-                "activeRoute" => ["dashboard.home"],
-                "permission" => "view dashboard",
-                "icon" => "ri-dashboard-line",
-                "roles" => ["owner", "staff", "admin"],
-            ],
-            [
                 "label" => "Transaction",
                 "route" => "dashboard.transaction",
                 "activeRoute" => [

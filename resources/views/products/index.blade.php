@@ -11,7 +11,7 @@
         <h1>Manajemen Produk</h1>
 
         <div class="flex justify-between mb-3">
-            <x-select-store :stores="$stores" :selectedStoreId="$stores->first()?->id" action="products.index"/>
+            <x-select-store :stores="$stores" :selectedStoreId="$stores->first()?->id" action="products.show"/>
             @can('create', App\Models\Product::class)
                 <a href="{{ route('products.create') }}" class="btn btn-primary">
                     @svg('ri-add-circle-line','w-20 me-2')

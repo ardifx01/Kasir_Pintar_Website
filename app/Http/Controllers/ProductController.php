@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Store;
 use App\Models\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ProductController extends Controller
@@ -59,8 +60,9 @@ class ProductController extends Controller
         return view("products.index", compact("products", "stores", "role"));
     }
 
-    public function show(string $store_id)
+    public function show(Request $request)
     {
+        $store_id = $request->query("store_id");
         $store = Store::find($store_id);
         if (!$store) {
             abort(404, "Store not found");
@@ -81,7 +83,7 @@ class ProductController extends Controller
         $categoryProducts = \App\Models\CategoryProduct::all(); // Get all category products for the view
 
         return view(
-            "products.show",
+            "products.index",
             compact("products", "store", "stores", "role", "categoryProducts")
         );
     }

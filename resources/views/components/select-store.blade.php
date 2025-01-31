@@ -1,5 +1,5 @@
 <div>
-    <form action="{{  $action ? route($action) : route('products.index') }}" method="GET">
+    <form action="{{  $action ? route($action) : route('products.show') }}" method="GET">
         <div class="flex items-center w-400">
             <select name="store_id" class="form-select w-full me-2">
                 @foreach ($stores as $store)
